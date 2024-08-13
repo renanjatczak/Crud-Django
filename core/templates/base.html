@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+        header, footer {
+            background-color: #2c2c2c; /* Cinza escuro */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho fixo -->
+    <header style="text-align: center; padding: 10px; position: fixed; top: 0; width: 100%; z-index: 1000;">
+        Modelo de cadastro
+    </header>
+
+    <!-- Espaço para compensar o cabeçalho fixo -->
+    <div style="padding-top: 60px;">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Rodapé fixo -->
+    <footer style="text-align: center; padding: 10px; position: fixed; bottom: 0; width: 100%;">
+        CRUD com Django e Python | 2024
+    </footer>
+
+</body>
+</html>

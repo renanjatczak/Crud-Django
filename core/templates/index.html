@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Usuários Cadastrados{% endblock %}
+{% block content %}
+<div class="container my-5" style="max-width: 1200px;">
+    <div class="row">
+        <!-- Coluna para o formulário -->
+        <div class="col-md-4">
+            <div class="card bg-dark text-white mb-4">
+                <div class="card-header">
+                    <h3>Preencher Cadastro</h3>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'salvar' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" name="nome" placeholder="Nome" class="form-control mb-2" style="border-radius: 0;">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="idade" placeholder="Idade" class="form-control mb-2" style="border-radius: 0;">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="telefone" placeholder="Telefone" class="form-control mb-2" style="border-radius: 0;">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="profissao" placeholder="Profissão" class="form-control mb-2" style="border-radius: 0;">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Coluna para a tabela -->
+        <div class="col-md-8">
+            <div class="card bg-dark text-white">
+                <div class="card-header">
+                    <h3>Usuários Cadastrados</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table table-dark table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Idade</th>
+                                <th>Telefone</th>
+                                <th>Profissão</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for pessoa in pessoas %}
+                                <tr>
+                                    <td>{{ pessoa.id }}</td>
+                                    <td>{{ pessoa.nome }}</td>
+                                    <td>{{ pessoa.idade }}</td>
+                                    <td>{{ pessoa.telefone }}</td>
+                                    <td>{{ pessoa.profissao }}</td>
+                                    <td>
+                                        <a href="{% url 'editar' pessoa.id %}" class="btn btn-warning btn-sm">Editar</a>
+                                        <a href="{% url 'excluir' pessoa.id %}" class="btn btn-danger btn-sm">Excluir</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

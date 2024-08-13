@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Editar Cadastro{% endblock %}
+{% block content %}
+<div class="container my-5" style="max-width: 1200px;">
+    <div class="row">
+        <!-- Coluna para o formulário de edição -->
+        <div class="col-md-4">
+            <div class="card bg-dark text-white mb-4">
+                <div class="card-header">
+                    <h3>Editar Cadastro</h3>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'editar' pessoa.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" name="nome" value="{{ pessoa.nome }}" placeholder="Nome" class="form-control mb-2" style="border-radius: 0;">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="idade" value="{{ pessoa.idade }}" placeholder="Idade" class="form-control mb-2" style="border-radius: 0;">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="telefone" value="{{ pessoa.telefone }}" placeholder="Telefone" class="form-control mb-2" style="border-radius: 0;">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="profissao" value="{{ pessoa.profissao }}" placeholder="Profissão" class="form-control mb-2" style="border-radius: 0;">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Atualizar</button>
+                        <a href="{% url 'home' %}" class="btn btn-primary">Voltar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Coluna para a tabela, se necessário -->
+        <div class="col-md-8">
+            <!-- Adicione qualquer conteúdo adicional ou remova esta coluna, se não for necessário -->
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Excluir Pessoa{% endblock %}
+{% block content %}
+<div class="container my-5" style="max-width: 1300px;">
+    <div class="row">
+        <!-- Coluna para o formulário de exclusão -->
+        <div class="col-md-4">
+            <div class="card bg-dark text-white mb-8" style="min-width: 300px;">
+                <div class="card-header" style="white-space: normal; word-wrap: break-word;">
+                    <h1 style="font-size: 1.5rem;">Excluir Pessoa</h1>
+                    <p style="margin-bottom: 1rem;">Tem certeza de que deseja excluir {{ pessoa.nome }}?</p>
+                    <form action="{% url 'excluir' pessoa.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                        <a href="{% url 'home' %}" class="btn btn-secondary">Cancelar</a>
+                    </form>
+                </div>
+            </div>  
+        </div>          
+    </div>
+</div>
+{% endblock %}
